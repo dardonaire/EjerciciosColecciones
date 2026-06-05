@@ -1,32 +1,30 @@
-curso = []
+import random
+arreglo = []
 
-print("Presione 1 para ingresar alumno")
-print("Presione cualquier otra tecla para salir")
+for ciclo in range(50):
+    aleatorio = random.randint(1,1000)
+    arreglo.append(aleatorio)
 
-op = input("Ingrese opcion: ")
+print("")
+print("Arreglo Original")
+print(arreglo)
+print("")
 
-if op == "1":
-    contador = 0
-    opc = ""
-    while opc != "n" and contador < 30:
+largo_arreglo = len(arreglo)
 
-        nombre = input("Ingrese el nombre del alumno: ")
-        direc = input("Ingrese la dirección del alumno: ")
-        tel = input("Ingrese el teléfono del alumno: ")
+for i in range(largo_arreglo - 1):
+    for j in range(largo_arreglo - 1 - i):
+        if arreglo[j] > arreglo[j+1]:
+            temporal = arreglo[j]
+            arreglo[j] = arreglo[j+1]
+            arreglo[j+1] = temporal
 
-        alumno = [nombre, direc, tel]
-        curso.append(alumno)
-        contador += 1
+print("")
+print("Arreglo Ordenando")
+print(arreglo)
 
-        if contador == 30:
-            opc = "n"
-            print("")
-        else:
-            opc = input("Desea agregar otro alumno (s/n): ")
-            print("")
-        for alum in curso:
-            print(f"Nombre: {alum} ")
-
-        
-        
-        
+if largo_arreglo % 2 == 0:
+    mediana = (arreglo[int(largo_arreglo/2) -1]) + arreglo[int(largo_arreglo/2)] /2
+else:
+    mediana = (arreglo[round(int(largo_arreglo/2))])
+print("Mediana: ",mediana)
