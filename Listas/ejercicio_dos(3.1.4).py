@@ -2,7 +2,7 @@
 import random
 suerte = []
 print("")
-print("Ingresensus 7 números de la suerte")
+print("Ingrese sus 7 números de la suerte")
 for numero in range(7):
     suerte.append(int(input("Ingrese número: ")))
 
@@ -14,7 +14,7 @@ for ronda in range(3):
     for turno in range (1,7 +1) :
         flag = True
         while flag:
-            aleatorio = random.randin(1, 49)
+            aleatorio = random.randint(1, 49)
             if lista.count(aleatorio) == 0:
                 lista.append(aleatorio)
                 flag = False
@@ -28,7 +28,7 @@ for ronda in range(3):
 
     contador = 0
     for numero in suerte:
-        if lista.count(numero) == 1:
+        if lista.count(numero) == 1:  #Si ese numero esta una vez en la lista, pasara a la 
             contador += 1
         if contador == 7:
             print("Hoy es su dia de suerte. Ha ganado!!")
