@@ -66,8 +66,31 @@ def buscar_libro(lista, titulo ):
         if libro ["titulo"] == titulo:
             return indice
     return -1 # Si no encuentra devolver -1
+def registrar_prestamos(lista):
+    for libro in lista:
+        if libro["anio"] >= 2000:
+            libro["estado"] = True
+        else:
+            libro["estado"] = False
+
+    print("Se actualizaron los registros de prestamos")
+def mostrar_libros(lista):
+    if len(lista) == 0:
+        print("No existen libros registrados")
+        return
     
-    
+    registrar_prestamos(lista)
+
+    print("===Lista libros====")
+    for libro in lista:
+        print(f"Titulo: {libro['titulo']}")
+        print(f"Autor: {libro['autor']}")
+        print(f"Año: {libro['anio']}")
+        
+        if libro['estado']:
+            print(f"Estado: Disponible para prestamo")
+        else:
+            print("Estado: solo consulta en sala")
 
     
 #====Codigo principal===
@@ -90,11 +113,11 @@ while True:
 
             libro_encontrado = lista_libros[posicion]
 
-            print(f"Titulo: {libro_encontrado['nombre']}")
+            print(f"Titulo: {libro_encontrado['titulo']}")
             print(f"Autor: {libro_encontrado['autor']}")
             print(f"Año: {libro_encontrado['anio']}")
 
-            if libro_encontrado['estado']:
+            if libro_encontrado["estado"]:
                 print("Estado: Disponible para prestamo")
             else:
                 print("Estado: Solo consulta en sala")
@@ -113,6 +136,17 @@ while True:
             print(f"Libro {libro_eliminar} eliminado con exito")
         else:
             print(f"El libro {libro_eliminar} no se encuentra registrado")
+    elif opcion_elegida == 4:
+        registrar_prestamos(lista_libros)
+    
+    elif opcion_elegida == 5:
+        mostrar_libros(lista_libros)
+    elif opcion_elegida == 6:
+        print("Gracias por uar el sistema de bliblioteca. Hasta la próxima")
+        break
+
+        
+
 
 
 

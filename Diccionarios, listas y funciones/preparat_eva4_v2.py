@@ -77,9 +77,9 @@ def agregar_producto(lista):
     else:
         print("El producto no cumple alguna condición")
 
-def buscar_producto(lista, nombre):
-    for posicion, producto in enumerate (lista):
-        if producto ["nombre"] == nombre:
+def buscar_producto(lista, nombrebuscado):
+    for posicion, producto in enumerate (lista): #producto es el diccionario
+        if producto ["nombre"] == nombrebuscado:
             return posicion
     return -1
 
