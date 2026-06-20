@@ -50,8 +50,8 @@ def agregar_libro(lista):
 
     if titulo_valido == True and autor_valido == True and anio_valido == True:
         libros = {
-            "titulo" : titulo,
-            "autor" : autor,
+            "titulo" : titulo.strip(),
+            "autor" : autor.strip(),
             "anio" : int(anio),
             "estado": False
         }
