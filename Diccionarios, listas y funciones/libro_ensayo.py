@@ -123,7 +123,7 @@ while True:
     elif op == 6:
         print("Gracias por ocupar el registro")
         break
-        
+         
     else:
         print("Ingrese opcion entre 1 y 6")
     
