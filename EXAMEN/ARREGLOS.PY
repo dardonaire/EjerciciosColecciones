@@ -37,11 +37,27 @@ def unidades_tipo(tipo_buscado, dicc_arreglos, dicc_bodega):
                     break
     
     print(f"La cantidad de arreglos del tipo {tipo_buscado} es {contador_arreglos}")
-        
 
 
+def busqueda_precio(p_min,p_max,dicc_arreglos, dicc_bodega):
 
+    lista_arreglos_precio = []
 
+    for codigo_arreglo_bodega, datos_bodega in dicc_bodega.items():
+        precio = datos_bodega[0]
+        if precio <= p_max and precio >= p_min and datos_bodega[1] > 0:
+            for codigo_arreglo, datos_arreglo in dicc_arreglos.items():
+                if codigo_arreglo == codigo_arreglo_bodega:
+                    lista_arreglos_precio.append(f"{datos_arreglo[0]} -- {codigo_arreglo}")
+                    break
+    
+    if len(lista_arreglos_precio) > 0:
+        lista_arreglos_precio.sort()
+
+        for arreglo in lista_arreglos_precio:
+            print(arreglo)
+    else:
+        print("No hay arreglos en ese rango de precios")
 
 
 #CÓDIGO PRINCIPAL
@@ -62,6 +78,7 @@ bodega = {
         'FLO5': [19990, 0],
         'FLO6': [22990, 6],
         }
+
 while True:
 
         op_selec = leer_opcion()
@@ -69,3 +86,14 @@ while True:
         if op_selec == 1:
             tipo_buscar = input("Ingrese tipo de arreglo: ")
             unidades_tipo(tipo_buscar, arreglos, bodega)
+
+        elif op_selec == 2:
+            try:
+                precio_minimo = int(input("Ingrese precio minimo a buscar: "))
+                precio_maximo = int(input("Ingrese precio mayor a buscar: "))
+                if precio_minimo >= 0 and precio_maximo >= 0 and precio_minimo <= precio_maximo:
+                    busqueda_precio(precio_minimo,precio_maximo,arreglos,bodega)
+                else:
+                    print("Debe ingresar valores enteros")
+            except ValueError:
+                print("Debe ingresar valores enteros")
